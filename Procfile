@@ -1,0 +1,1 @@
+web: gunicorn djangomcq.wsgi --log-file -

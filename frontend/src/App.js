@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Student from "./components/student";
+import Teacher from "./components/teacher";
+import Home from "./components/home";
 
-import axios from "axios";
-import "./App.css";
+//import "./App.css";
 
 function App() {
-  const fetchCompanies = async () => {
-    await axios
-      .get("http://127.0.0.1:8000/api/show")
-      .then((jsonResponse) => console.log(jsonResponse.data));
-  };
-
-  fetchCompanies();
-
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/student" component={Student} />
+          <Route path="/teacher" component={Teacher} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

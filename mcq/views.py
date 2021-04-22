@@ -17,8 +17,13 @@ def upload(request):
     }
     return Response(api_urls)
 
+
 @api_view(['GET','POST'])
 def show(request):
    quiz = Quiz.objects.all()
    serializer = QuizSerializer(quiz,many=True)
    return Response(serializer.data)
+
+
+def frontend(request):
+    return render(request,'index.html')   

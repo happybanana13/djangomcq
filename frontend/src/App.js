@@ -3,8 +3,6 @@ import Student from "./components/student";
 import Teacher from "./components/teacher";
 import Home from "./components/home";
 
-//import "./App.css";
-
 function App() {
   return (
     <Router>

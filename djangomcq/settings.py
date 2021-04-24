@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'mcq'
+    'mcq',
+    'frontend'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +65,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['frontend/build'],
+        'DIRS': [os.path.join(PROJECT_ROOT,'frontend/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -3,15 +3,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CssBaseline, Typography, Button, Box } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 function Teacher() {
   const [quizName, setQuizName] = useState();
   const [questionlist, setQuestionList] = useState([]);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     if (questionlist.length === 10) {
+      axios.post(
+        "http://127.0.0.1:8000/api/show/",
+        { questionlist },
+        {
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
     }
-  }, [questionlist]);
+  }, [questionlist]); */
   const {
     register,
     handleSubmit,
@@ -52,9 +62,8 @@ function Teacher() {
           <input type="submit" />
         </form>
       )}
-      {quizName && questionlist.length !== 10 && (
-        <Form setQuestionList={setQuestionList} />
-      )}
+
+      <Form />
     </div>
   );
 }

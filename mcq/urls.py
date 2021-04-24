@@ -1,9 +1,10 @@
-from django.urls import path
-
+from django.urls import path, include
+from rest_framework import routers
 from . import views
 
 urlpatterns = [
-    path('',views.upload, name='upload'),
-    path('show/',views.show,name="show"),
-    path('frontend/',views.frontend, name='frontend')
+    path('question/',views.showquestion,name="showquestion"),
+    path('question/<str:pk>',views.showonequestion,name="showone"),
+    path('addquestion/',views.addquestion,name="addquestion"),
+    path('quiz/',views.showquiz,name="showquiz"),
 ]

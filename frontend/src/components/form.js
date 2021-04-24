@@ -1,43 +1,46 @@
+import axios from "axios";
 import React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import { useForm } from "react-hook-form";
 //import {TextField} from '@material-ui/core';
-//import axios from "axios";
 
-function Form({ setQuestionList }) {
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
+
+function Form() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => setQuestionList((prevList) => [...prevList, data]);
+  const onSubmit = (data) => axios.post("/api/addquestion/", data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
         placeholder="Question"
-        {...register("Question", { required: true })}
+        {...register("questionname", { required: true })}
       />
       <input
         type="text"
         placeholder="Correct Answer"
-        {...register("Correct Answer", { required: true })}
+        {...register("sol", { required: true })}
       />
       <input
         type="text"
         placeholder="Wrong Answer"
-        {...register("Wrong Answer1", { required: true })}
+        {...register("wrongans1", { required: true })}
       />
       <input
         type="text"
         placeholder="Wrong Answer"
-        {...register("Wrong Answer2", { required: true })}
+        {...register("wrongans2", { required: true })}
       />
       <input
         type="text"
         placeholder="Wrong Answer"
-        {...register("Wrong Answer3", { required: true })}
+        {...register("wrongans3", { required: true })}
       />
 
       <input type="submit" />

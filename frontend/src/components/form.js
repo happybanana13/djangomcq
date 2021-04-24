@@ -7,13 +7,16 @@ import { useForm } from "react-hook-form";
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
-function Form() {
+function Form(props) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => axios.post("/api/addquestion/", data);
+  const onSubmit = (data) => {
+    axios.post("/api/addquestion/", data);
+    props.setParentQuestionList((prevList) => [...prevList, data.questionname]);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

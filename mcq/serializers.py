@@ -11,4 +11,4 @@ class QuizSerializer(serializers.ModelSerializer):
     questionlist = QuestionSerializer(many=True, read_only=True, source='question')        
     class Meta:
         model = Quiz
-        fields = ['quizname','questionlist']
+        fields = ['quizname','questionlist']        

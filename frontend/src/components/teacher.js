@@ -52,7 +52,7 @@ function Teacher() {
           </Button>
         </Link>
       </Box>
-      {!quizName && (
+      {
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
@@ -61,9 +61,8 @@ function Teacher() {
           />
           <input type="submit" />
         </form>
-      )}
-
-      <Form />
+      }
+      <Form setParentQuestionList={setQuestionList} />
     </div>
   );
 }

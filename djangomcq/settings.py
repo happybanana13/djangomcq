@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'mcq',
-    'frontend'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +64,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT,'frontend/build')],
+        'DIRS': [os.path.join(BASE_DIR,'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,7 +138,7 @@ STATIC_URL = '/static/'
 ROOT_PATH = os.path.dirname(__file__)
 
 # Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'frontend/build/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'build/static')]
     #os.path.join(PROJECT_ROOT, 'static'),
     
 

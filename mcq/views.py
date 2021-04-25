@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response 
-from .serializers import QuestionSerializer, QuizSerializer
+from .serializers import QuestionSerializer, QuizSerializer,QuizAndQuestionSerializer
 from .models import  Question, Quiz
 
 # Create your views here.
@@ -20,12 +20,16 @@ def showonequestion(request,pk):
 
 @api_view(['POST'])
 def addquestion(request):
-    serializer = QuestionSerializer(data=request.data)
-
+    serializer = QuizAndQuestionSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        questions=QuestionSerializer(data=request.data['questionList'],many=True)
+        if questions.is_valid():
+            questions.save()
+        quiz=Quiz.objects.create(quizname=request.data['quizname'])
+        quiz.save()
+        return Response(questions.data,status=200)
+    return Response(status=400)
 
-    return Response(serializer.data)
 
 
 @api_view(['GET'])

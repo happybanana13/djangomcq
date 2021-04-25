@@ -4,15 +4,14 @@ from .models import Question, Quiz
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = '__all__'
+        fields = ['questionname','sol','wrongans1','wrongans2','wrongans3']
 
-class QuestionNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Question
-        fields = ['questionname']
-
-class QuizSerializer(serializers.ModelSerializer):
-    questionnamelist = QuestionNameSerializer(many=True, read_only=True, source='question')        
+class QuizSerializer(serializers.ModelSerializer):        
     class Meta:
         model = Quiz
-        fields = ['quizname','questionnamelist']        
+        fields = '__all__'
+     
+
+class QuizAndQuestionSerializer(serializers.Serializer):
+    questionList=QuestionSerializer(many=True)
+    quizname=serializers.CharField(max_length=100)

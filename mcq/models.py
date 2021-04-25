@@ -17,7 +17,7 @@ class Question(models.Model):
 
 class Quiz(models.Model):
     quizname = models.CharField(max_length=100)
-    question = models.ManyToManyField(Question)
+    questionList = models.ManyToManyField(Question)
 
     def __str__(self):
         return self.quizname

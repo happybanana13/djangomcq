@@ -15,7 +15,7 @@ function Form(props) {
   } = useForm();
   const onSubmit = (data) => {
     axios.post("/api/addquestion/", data);
-    props.setParentQuestionList((prevList) => [...prevList, data.questionname]);
+    props.setParentQuestionList((prevList) => [...prevList, data]);
   };
 
   return (

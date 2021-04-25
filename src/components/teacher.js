@@ -9,19 +9,20 @@ function Teacher() {
   const [quizName, setQuizName] = useState();
   const [questionlist, setQuestionList] = useState([]);
 
-  /*  useEffect(() => {
+  useEffect(() => {
     if (questionlist.length === 10) {
-      axios.post(
-        "http://127.0.0.1:8000/api/show/",
-        { questionlist },
-        {
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
-      );
+      // axios.post(
+      //   "http://127.0.0.1:8000/api/show/",
+      //   { questionlist },
+      //   {
+      //     headers: {
+      //       "Content-type": "application/json",
+      //     },
+      //   }
+      // );
+      console.log({ quizName, questionlist });
     }
-  }, [questionlist]); */
+  }, [questionlist]);
   const {
     register,
     handleSubmit,
@@ -52,7 +53,7 @@ function Teacher() {
           </Button>
         </Link>
       </Box>
-      {
+      {!quizName && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
@@ -61,8 +62,10 @@ function Teacher() {
           />
           <input type="submit" />
         </form>
-      }
-      <Form setParentQuestionList={setQuestionList} />
+      )}
+      {quizName && questionlist.length !== 10 && (
+        <Form setParentQuestionList={setQuestionList} />
+      )}
     </div>
   );
 }

@@ -11,8 +11,13 @@ class Question(models.Model):
     wrongans2 = models.CharField(max_length=50)
     wrongans3 = models.CharField(max_length=50)
     
+    def __str__(self):
+        return self.questionname
+    
 
 class Quiz(models.Model):
     quizname = models.CharField(max_length=100)
     question = models.ManyToManyField(Question)
 
+    def __str__(self):
+        return self.quizname
